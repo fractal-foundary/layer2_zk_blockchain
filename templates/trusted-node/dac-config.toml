@@ -1,0 +1,33 @@
+PrivateKey = {Path = "/etc/zkevm/dac.keystore", Password = "{{.zkevm_l2_keystore_password}}"}
+
+[L1]
+WsURL = "{{.l1_ws_url}}"
+RpcURL = "{{.l1_rpc_url}}"
+PolygonValidiumAddress = "{{.zkevm_rollup_address}}"
+DataCommitteeAddress = "{{.polygon_data_committee_address}}"
+Timeout = "1m"
+RetryPeriod = "5s"
+BlockBatchSize = "64"
+GenesisBlock = "0"
+TrackSequencer = false
+
+[Log]
+Environment = "development" # "production" or "development"
+Level = "info"
+Outputs = ["stderr"]
+
+[DB]
+User = "{{.zkevm_db_dac_user}}"
+Password = "{{.zkevm_db_dac_password}}"
+Name = "{{.zkevm_db_dac_name}}"
+Host = "{{.zkevm_db_dac_hostname}}{{.deployment_suffix}}"
+Port = "{{.zkevm_db_postgres_port}}"
+EnableLog = false
+MaxConns = 200
+
+[RPC]
+Host = "0.0.0.0"
+Port = {{.zkevm_dac_port}}
+ReadTimeout = "60s"
+WriteTimeout = "60s"
+MaxRequestsPerIPAndSecond = 500
